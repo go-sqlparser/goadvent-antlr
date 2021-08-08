@@ -5,8 +5,9 @@ import (
 	"fmt"
 	"strconv"
 
-	"./parser"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
+
+	"github.com/go-sqlparser/goadvent-antlr/parser"
 )
 
 type calcListener struct {
@@ -91,12 +92,12 @@ func calc(input string) int {
 }
 
 func main() {
-	fmt.Printf("The answer is: %d\n", calc("1 + 2 * 3"))
+	fmt.Printf("The answer is: %d\n", calc("12 * (34 - 56)"))
 }
 
-/* 
+/*
 
 $ go run example.go
-The answer is: 7
+The answer is: -264
 
 */
