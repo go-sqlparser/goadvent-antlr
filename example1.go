@@ -24,3 +24,14 @@ func main() {
 		fmt.Printf("%s (%q)\n", lexer.SymbolicNames[t.GetTokenType()], t.GetText())
 	}
 }
+
+/* 
+
+$ go run example1.go
+NUMBER ("1")
+ADD ("+")
+NUMBER ("2")
+MUL ("*")
+NUMBER ("3")
+
+*/

@@ -1,4 +1,4 @@
-// Generated from Calc.g4 by ANTLR 4.7.
+// Code generated from Calc.g4 by ANTLR 4.9.2. DO NOT EDIT.
 
 package parser // Calc
 
@@ -27,9 +27,6 @@ var parserATN = []uint16{
 	2, 19, 22, 3, 2, 2, 2, 20, 18, 3, 2, 2, 2, 20, 21, 3, 2, 2, 2, 21, 5, 3,
 	2, 2, 2, 22, 20, 3, 2, 2, 2, 4, 18, 20,
 }
-var deserializer = antlr.NewATNDeserializer(nil)
-var deserializedATN = deserializer.DeserializeFromUInt16(parserATN)
-
 var literalNames = []string{
 	"", "'*'", "'/'", "'+'", "'-'",
 }
@@ -40,21 +37,25 @@ var symbolicNames = []string{
 var ruleNames = []string{
 	"start", "expression",
 }
-var decisionToDFA = make([]*antlr.DFA, len(deserializedATN.DecisionToState))
-
-func init() {
-	for index, ds := range deserializedATN.DecisionToState {
-		decisionToDFA[index] = antlr.NewDFA(ds, index)
-	}
-}
 
 type CalcParser struct {
 	*antlr.BaseParser
 }
 
+// NewCalcParser produces a new parser instance for the optional input antlr.TokenStream.
+//
+// The *CalcParser instance produced may be reused by calling the SetInputStream method.
+// The initial parser configuration is expensive to construct, and the object is not thread-safe;
+// however, if used within a Golang sync.Pool, the construction cost amortizes well and the
+// objects can be used in a thread-safe manner.
 func NewCalcParser(input antlr.TokenStream) *CalcParser {
 	this := new(CalcParser)
-
+	deserializer := antlr.NewATNDeserializer(nil)
+	deserializedATN := deserializer.DeserializeFromUInt16(parserATN)
+	decisionToDFA := make([]*antlr.DFA, len(deserializedATN.DecisionToState))
+	for index, ds := range deserializedATN.DecisionToState {
+		decisionToDFA[index] = antlr.NewDFA(ds, index)
+	}
 	this.BaseParser = antlr.NewBaseParser(input)
 
 	this.Interpreter = antlr.NewParserATNSimulator(this, deserializedATN, decisionToDFA, antlr.NewPredictionContextCache())
@@ -318,6 +319,14 @@ func (s *MulDivContext) Expression(i int) IExpressionContext {
 	return t.(IExpressionContext)
 }
 
+func (s *MulDivContext) MUL() antlr.TerminalNode {
+	return s.GetToken(CalcParserMUL, 0)
+}
+
+func (s *MulDivContext) DIV() antlr.TerminalNode {
+	return s.GetToken(CalcParserDIV, 0)
+}
+
 func (s *MulDivContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(CalcListener); ok {
 		listenerT.EnterMulDiv(s)
@@ -374,6 +383,14 @@ func (s *AddSubContext) Expression(i int) IExpressionContext {
 	}
 
 	return t.(IExpressionContext)
+}
+
+func (s *AddSubContext) ADD() antlr.TerminalNode {
+	return s.GetToken(CalcParserADD, 0)
+}
+
+func (s *AddSubContext) SUB() antlr.TerminalNode {
+	return s.GetToken(CalcParserSUB, 0)
 }
 
 func (s *AddSubContext) EnterRule(listener antlr.ParseTreeListener) {
@@ -452,21 +469,23 @@ func (p *CalcParser) expression(_p int) (localctx IExpressionContext) {
 				if !(p.Precpred(p.GetParserRuleContext(), 3)) {
 					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 3)", ""))
 				}
-				p.SetState(11)
+				{
+					p.SetState(11)
 
-				var _lt = p.GetTokenStream().LT(1)
+					var _lt = p.GetTokenStream().LT(1)
 
-				localctx.(*MulDivContext).op = _lt
+					localctx.(*MulDivContext).op = _lt
 
-				_la = p.GetTokenStream().LA(1)
+					_la = p.GetTokenStream().LA(1)
 
-				if !(_la == CalcParserMUL || _la == CalcParserDIV) {
-					var _ri = p.GetErrorHandler().RecoverInline(p)
+					if !(_la == CalcParserMUL || _la == CalcParserDIV) {
+						var _ri = p.GetErrorHandler().RecoverInline(p)
 
-					localctx.(*MulDivContext).op = _ri
-				} else {
-					p.GetErrorHandler().ReportMatch(p)
-					p.Consume()
+						localctx.(*MulDivContext).op = _ri
+					} else {
+						p.GetErrorHandler().ReportMatch(p)
+						p.Consume()
+					}
 				}
 				{
 					p.SetState(12)
@@ -481,21 +500,23 @@ func (p *CalcParser) expression(_p int) (localctx IExpressionContext) {
 				if !(p.Precpred(p.GetParserRuleContext(), 2)) {
 					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
 				}
-				p.SetState(14)
+				{
+					p.SetState(14)
 
-				var _lt = p.GetTokenStream().LT(1)
+					var _lt = p.GetTokenStream().LT(1)
 
-				localctx.(*AddSubContext).op = _lt
+					localctx.(*AddSubContext).op = _lt
 
-				_la = p.GetTokenStream().LA(1)
+					_la = p.GetTokenStream().LA(1)
 
-				if !(_la == CalcParserADD || _la == CalcParserSUB) {
-					var _ri = p.GetErrorHandler().RecoverInline(p)
+					if !(_la == CalcParserADD || _la == CalcParserSUB) {
+						var _ri = p.GetErrorHandler().RecoverInline(p)
 
-					localctx.(*AddSubContext).op = _ri
-				} else {
-					p.GetErrorHandler().ReportMatch(p)
-					p.Consume()
+						localctx.(*AddSubContext).op = _ri
+					} else {
+						p.GetErrorHandler().ReportMatch(p)
+						p.Consume()
+					}
 				}
 				{
 					p.SetState(15)

@@ -93,3 +93,10 @@ func calc(input string) int {
 func main() {
 	fmt.Printf("The answer is: %d\n", calc("1 + 2 * 3"))
 }
+
+/* 
+
+$ go run example.go
+The answer is: 7
+
+*/

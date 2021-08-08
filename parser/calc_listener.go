@@ -1,4 +1,4 @@
-// Generated from Calc.g4 by ANTLR 4.7.
+// Code generated from Calc.g4 by ANTLR 4.9.2. DO NOT EDIT.
 
 package parser // Calc
 
