@@ -44,3 +44,9 @@ func (s *BaseCalcListener) EnterAddSub(ctx *AddSubContext) {}
 
 // ExitAddSub is called when production AddSub is exited.
 func (s *BaseCalcListener) ExitAddSub(ctx *AddSubContext) {}
+
+// EnterParentheses is called when production Parentheses is entered.
+func (s *BaseCalcListener) EnterParentheses(ctx *ParenthesesContext) {}
+
+// ExitParentheses is called when production Parentheses is exited.
+func (s *BaseCalcListener) ExitParentheses(ctx *ParenthesesContext) {}

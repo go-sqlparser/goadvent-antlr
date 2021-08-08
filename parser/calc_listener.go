@@ -20,6 +20,9 @@ type CalcListener interface {
 	// EnterAddSub is called when entering the AddSub production.
 	EnterAddSub(c *AddSubContext)
 
+	// EnterParentheses is called when entering the Parentheses production.
+	EnterParentheses(c *ParenthesesContext)
+
 	// ExitStart is called when exiting the start production.
 	ExitStart(c *StartContext)
 
@@ -31,4 +34,7 @@ type CalcListener interface {
 
 	// ExitAddSub is called when exiting the AddSub production.
 	ExitAddSub(c *AddSubContext)
+
+	// ExitParentheses is called when exiting the Parentheses production.
+	ExitParentheses(c *ParenthesesContext)
 }

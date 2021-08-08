@@ -3,14 +3,15 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 
-	"./parser"
+	"github.com/go-sqlparser/goadvent-antlr/parser"
 )
 
 func main() {
 	// Setup the input
-	is := antlr.NewInputStream("1 + 2 * 3")
+	is := antlr.NewInputStream("22 * (34 + 56)")
 
 	// Create the Lexer
 	lexer := parser.NewCalcLexer(is)
@@ -25,12 +26,14 @@ func main() {
 	}
 }
 
-/* 
+/*
 
 $ go run example1.go
+OPP ("(")
 NUMBER ("1")
 ADD ("+")
 NUMBER ("2")
+CLP (")")
 MUL ("*")
 NUMBER ("3")
 
